@@ -1,0 +1,67 @@
+create table customer (
+	idcustomer VARCHAR2(20),
+	password VARCHAR2(20),
+	tempat_lahir VARCHAR(30), 
+	tanggal_lahir VARCHAR(30),
+	gender VARCHAR(10),
+	nama VARCHAR(50),
+	email VARCHAR(30),
+	nohp VARCHAR(30),
+	PRIMARY KEY(idcustomer)
+	
+); 
+
+
+create table pemesanan (
+	idpemesanan VARCHAR2(20),
+	idcustomer VARCHAR2(20),
+	idkereta VARCHAR2(20),
+	PRIMARY KEY (idpemesanan),
+	FOREIGN KEY (idcustomer) REFERENCES customer (idcustomer),
+	FOREIGN KEY (idkereta) REFERENCES kereta (idkereta),
+	FOREIGN KEY (idpenjadwalan) REFERENCES penjadwalan (idpenjadwalan)
+	
+) ;
+
+create table kereta(
+	nama_kereta VARCHAR2(20),
+	idkereta VARCHAR(10),
+	PRIMARY KEY (idkereta)
+
+) ;
+
+create table admin(
+	idadmin VARCHAR2(20),
+	username_admin VARCHAR(20),
+	password_admin VARCHAR2(20)
+	PRIMARY KEY (idadmin) 
+);
+
+create table stasiun (
+	idstasiun VARCHAR(10),
+	stasiun_awal VARCHAR(20),
+	stasiun_akhir VARCHAR (20)
+	PRIMARY KEY (idstasiun)
+); 
+
+create table penjadwalan (
+	idpenjadwalan VARCHAR2 (20),
+	idstasiun VARCHAR(10),
+	idkereta VARCHAR(10),
+	PRIMARY KEY (idpenjadwalan),
+	FOREIGN KEY idstasiun REFERENCES stasiun(idstasiun),
+	FOREIGN KEY idkereta REFERENCES kereta(idkereta)
+); 
+
+create table pengelolaan (
+	idpengelolaan VARCHAR(10),
+	idadmin VARCHAR2(20),
+	idstasiun VARCHAR(10),
+	idpenjadwalan VARCHAR2(20),
+	PRIMARY KEY (idpengelolaan),
+	FOREIGN KEY (idadmin) REFERENCES admin(idadmin),
+	FOREIGN KEY (idstasiun) REFERENCES stasiun (idstasiun),
+	FOREIGN KEY (idpenjadwalan) REFERENCES penjadwalan(idpenjadwalan)
+
+);
+
