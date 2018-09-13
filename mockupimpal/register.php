@@ -53,10 +53,10 @@
 			<div class="container-fluid">
 				<div class="row" style="color: #C0C0C0;">
 					<div class="col-md-4">
-						<p style="text-align: left;margin-top: 10px;">PT. Kereta Lambat Tapi Kuat</p>
+						<p style="text-align: left;margin-top: 10px;">PT. Cah Kereta</p>
 					</div>
 					<div class="col-md-4">
-						<p style="text-align: center;margin-top: 10px;margin-top: 10px;">Copyright © KLTK</p>
+						<p style="text-align: center;margin-top: 10px;margin-top: 10px;">Copyright © CK</p>
 					</div>
 					<div class="col-md-4">
 						<p style="text-align: right;margin-top: 10px;">Download the android version here <a href="#"><img src="img/playstore.png"></a></p>
