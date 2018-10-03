@@ -1,12 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 class Mcustomer extends CI_Model {
 	function __construct(){
 		parent::__construct();
 		$this->load->database();
 	}
-	public function ceklogin($username,$password){
+	public function cekLoginCus($username_cus,$password_cus){
+		$cek = FALSE;
 		$this->db->from('customer');
 		$where = array(
 			'username' => $username,
@@ -14,9 +15,12 @@ class Mcustomer extends CI_Model {
 		);
 		$this->db->where($where);
 		$query = $this->db->get();
-		return $query->num_rows();
+		if ($query->num_rows()){
+			$cek = TRUE;
+		}
+		return $cek;
 	}
-	public function daftarbaru($username,$password,$email){
+	public function daftarBaru($username,$password,$email){
 		$data = array(
 	        'username' => $username,
 	        'password' => $password,
@@ -24,18 +28,5 @@ class Mcustomer extends CI_Model {
 		);
 		$this->db->insert('customer', $data);
 	}
-	public function deleteriwayat($idriwayat){
-		$this->db->where('idriwayat', $idriwayat);
-		$this->db->delete('riwayat');
-	}
-	public function pesan($noktp,$username,$idjadwal,$statusbayar,$statuscheckin){
-		$data = array(
-	        'noktp' => $noktp,
-	        'username' => $username,
-	        'idjadwal' => $idjadwal,
-	        'statusbayar' => 0,
-	        'statuscheckin' => 0
-		);
-		$this->db->insert('tiket', $data);
-	}
 }
+?>
