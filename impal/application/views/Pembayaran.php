@@ -11,12 +11,16 @@
     body {font-family: "Roboto", sans-serif}
     .w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
     .margin1{
-        margin-top: 60px;
-        margin-bottom:30px;
+        margin-top:120px;
+        margin-bottom:50px;
         padding: 10px;
     }
     .margin2{
-        padding-top:10px;
+        margin-top:5px;
+    }
+    .panel{
+        height:550px;
+        overflow-y:scroll;
     }
 </style>
 <body>
@@ -29,7 +33,7 @@
     </nav>
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
     <div id="myTop" class="w3-container w3-top w3-large">
-        <p><i class="fa fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+        <p style="margin-top:5px;"><i class="fa fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
         <span id="myIntro" class="w3-hide">Cah Kereta</span></p>
     </div>
     <div class="w3-row">
@@ -42,36 +46,34 @@
                             <div class="w3-container">
                                 <div class="w3-container margin1">
                                     <div class="row">
-                                        <div class="w3-col l3 m3"></div>
-                                        <div class="w3-col l6 m6">
-                                            <form class="w3-card w3-round margin1" method="post" encype="multipart/form-data" action="<?php echo base_url(); ?>Cpesan/next">
-                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Pesan Tiket</h2>
+                                        <div class="w3-col l2 m2"></div>
+                                        <div class="w3-col l8 m8 w3-card" style="">
+                                            <div class="w3-container w3-round">
+                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Kode Pembayaran</h2>
                                                 <hr>
-                                                <div class="margin2">
-                                                    <label for="berangkat">Stasiun Keberangkatan</label>
-                                                    <select class="w3-input w3-round" name="stab" id="berangkat">
-                                                        <option value="bekasi">Bekasi</option>
-                                                    </select>
-                                                </div>
-                                                <div class="margin2">
-                                                    <label for="tujuan">Stasiun Tujuan</label>
-                                                    <select class="w3-input w3-round" name="staj" id="tujuan">
-                                                        <option value="bandung">Bandung</option>
-                                                    </select>
-                                                </div>
-                                                <div class="margin2">
-                                                    <label for="tanggal">Tanggal Keberangkatan</label>
-                                                    <input type="date" class="w3-input w3-sand w3-round" name="tanggal" id="tanggal">
-                                                </div>
-                                                <div class="w3-row">
-                                                    <div class="w3-col s8 margin2"></div>
-                                                    <div class="w3-col s4 margin2">
-                                                        <input type="submit" name="next" value="Next" id="next" class="w3-input w3-round">
+                                                <div class="w3-container">
+                                                    <div class="w3-container">
+                                                        <header>
+                                                            <h4 class="w3-center"><b>Terima Kasih</b></h4>
+                                                            <hr>
+                                                        </header>
+                                                        <div>
+                                                            <p>Berikut merupakan kode pembayaran Anda. Pembayaran bisa dilakukan di retail atau ATM terdekat.</p>
+                                                            <div class="w3-border w3-sand" style="margin:auto;padding:10px;">
+                                                                <h4 class="w3-center"><b>9983423642736</b></h4>
+                                                            </div>
+                                                        </div>
+                                                        <footer style="margin-top:10px;margin-bottom:10px;">
+                                                            <p>Salam Hangat, Cah Kereta</p>
+                                                            <form action="<?php echo base_url(); ?>Cdashboard">
+                                                                <input type="submit" class="w3-button w3-sand w3-round" value="Beranda">
+                                                            </form>
+                                                        </footer>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                        <div class="w3-col l3 m3"></div>
+                                        <div class="w3-col l2 m2"></div>
                                     </div>
                                 </div>
                             </div>
@@ -96,11 +98,11 @@
     window.onscroll = function() {myFunction()};
     function myFunction() {
         if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+            document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity","w3-theme");
             document.getElementById("myIntro").classList.add("w3-show-inline-block");
         } else {
             document.getElementById("myIntro").classList.remove("w3-show-inline-block");
-            document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+            document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity","w3-theme");
         }
     }
 
