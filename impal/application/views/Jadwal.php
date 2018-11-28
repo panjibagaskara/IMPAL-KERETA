@@ -52,52 +52,35 @@
                                                 <h2 class="w3-center w3-bold" style="padding-top:15px;">Daftar Perjalanan</h2>
                                                 <hr>
                                                 <div class="margin2 w3-border w3-round w3-sand">
-                                                    <div class="w3-container" style="margin-top:5px;">
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><b>Argo Parahyangan KA131</b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center"><b>Ekonomi AC</b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-right-align"><b>230 seat</b></p></div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align">BKS to BDG</p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center">Rp120.000</p></div>
-                                                            <div class="w3-col l4 m4 w3-right-align">
-                                                                <form method="post" encype="multipart/form-data" action="<?php echo base_url(); ?>Cjadwal/book">
-                                                                    <input type="hidden" name="id" value="">
-                                                                    <input type="submit" class="w3-white w3-round" value="Book">
-                                                                </form>
+                                                    <?php 
+                                                        foreach ($jadwal['entries'] as $key){ ?>
+                                                            <div class="w3-container" style="margin-top:5px;">
+                                                                <div class="w3-row">
+                                                                    <div class="w3-col l4 m4"><p class="w3-left-align"><b><?php echo $key->namakereta; ?></b></p></div>
+                                                                    <div class="w3-col l4 m4"><p class="w3-center"><b><?php echo $key->kelas; ?></b></p></div>
+                                                                    <div class="w3-col l4 m4"><p class="w3-right-align"><b><?php echo $key->jumkursi; ?> seat</b></p></div>
+                                                                </div>
+                                                                <div class="w3-row">
+                                                                    <div class="w3-col l4 m4"><p class="w3-left-align"><?php echo $_GET['stab']; ?> to <?php echo $_GET['staj']; ?></p></div>
+                                                                    <div class="w3-col l4 m4"><p class="w3-center">Rp. <?php echo $key->harga; ?></p></div>
+                                                                    <div class="w3-col l4 m4 w3-right-align">
+                                                                        <form method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Cjadwal/book">
+                                                                            <input type="hidden" name="id" value="<?php echo $key->idjadwal; ?>">
+                                                                            <input type="submit" class="w3-white w3-round" value="Book">
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="w3-row">
+                                                                    <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: <?php echo $key->tanggalberangkat; ?> <?php echo $key->jamberangkat; ?></i></p></div>
+                                                                    <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: <?php echo $key->tanggalberangkat; ?> <?php echo $key->jamtiba; ?></i></p></div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: 13 November 2018 12:00</i></p></div>
-                                                            <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: 13 November 2018 15:00</i></p></div>
-                                                        </div>
-                                                    </div>
+                                                            <hr>
+                                                    <?php 
+                                                        }
+                                                    ?>
                                                 </div>
                                                 <hr>
-                                                <div class="margin2 w3-border w3-round w3-sand">
-                                                    <div class="w3-container" style="margin-top:5px;">
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><b>Argo Parahyangan KA131</b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center"><b>Ekonomi AC</b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-right-align"><b>230 seat</b></p></div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align">BKS to BDG</p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center">Rp120.000</p></div>
-                                                            <div class="w3-col l4 m4 w3-right-align">
-                                                                <form method="post" encype="multipart/form-data" action="<?php echo base_url(); ?>Cjadwal/book">
-                                                                    <input type="hidden" name="id" value="">
-                                                                    <input type="submit" class="w3-white w3-round" value="Book">
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: 13 November 2018 12:00</i></p></div>
-                                                            <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: 13 November 2018 15:00</i></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="w3-col l2 m2"></div>

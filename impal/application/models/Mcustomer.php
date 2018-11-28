@@ -6,19 +6,25 @@ class Mcustomer extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-	public function cekLoginCus($username_cus,$password_cus){
-		$cek = FALSE;
+	public function cekUsername($username){
+		$cek = TRUE;
+		$this->db->from('customer');
+		$this->db->where('username',$username);
+		$query = $this->db->get();
+		if($query->num_rows()>0){
+			$cek = FALSE;
+		}
+		return $cek;
+	}
+	public function LoginCus($username_cus,$password_cus){
 		$this->db->from('customer');
 		$where = array(
-			'username' => $username,
-			'password' => $password
+			'username' => $username_cus,
+			'password' => $password_cus
 		);
 		$this->db->where($where);
 		$query = $this->db->get();
-		if ($query->num_rows()){
-			$cek = TRUE;
-		}
-		return $cek;
+		return $query;
 	}
 	public function daftarBaru($username,$password,$email){
 		$data = array(
@@ -27,6 +33,7 @@ class Mcustomer extends CI_Model {
 	        'email' => $email
 		);
 		$this->db->insert('customer', $data);
+		return $this->db->affected_rows();
 	}
 }
 ?>

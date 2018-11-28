@@ -14,11 +14,11 @@ body {font-family: "Roboto", sans-serif}
 <body>
 
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-    <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="<?php echo base_url(); ?>Cdashboard"><img src="<?php echo base_url(); ?>/img/LOGO.png" style="width:100%;"></a>
-    <a class="w3-bar-item w3-button w3-teal" href="<?php echo base_url(); ?>Cdashboard">Home</a>
-    <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Cdashboard/pesan">Pesan Tiket</a>
-    <a class="w3-bar-item w3-button" href="#">Riwayat Pemesanan</a>
-    <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Clogin/logout">LOGOUT</a>
+    <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="<?php echo base_url(); ?>/img/LOGO.png" style="width:100%;"></a>
+    <a class="w3-bar-item w3-button w3-teal" href="#">Home</a>
+    <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Caddjadwal">Tambah Jadwal</a>
+    <a class="w3-bar-item w3-button" href="#">Boarding</a>
+    <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Calogin/logout">LOGOUT</a>
 </nav>
 
 
@@ -39,12 +39,11 @@ body {font-family: "Roboto", sans-serif}
 
     <div class="w3-container" style="padding:94px 32px">
 
-        <h2>Layanan Pemesanan Tiket Kereta Api</h2>
+        <h2>Layanan Pengelolaan Tiket Kereta Api</h2>
 
         <ul class="w3-leftbar w3-theme-border" style="list-style:none">
-            <li>Melayani Booking tiket</li>
-            <li>Melihat jadwal keberangkatan</li>
-            <li>Mengelola riwayat pemesanan</li>
+            <li>Mengatur Jadwal Keberangkatan</li>
+            <li>Mengelola boarding</li>
         </ul>
     </div>
 

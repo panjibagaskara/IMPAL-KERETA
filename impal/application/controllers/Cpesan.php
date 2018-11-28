@@ -8,15 +8,26 @@ class Cpesan extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('Pesan');
+		$sql = $this->Mjadwal->getStasiun();
+		$query['stasiun']['entries'] = $sql->result();
+		$this->load->view('Pesan',$query);
 	}
 	public function next(){
-		if (!empty($_POST['stab'])&&!empty($_POST['staj'])&&!empty($_POST['tanggal'])){
-			$stab = $_POST['stab'];
-			$staj = $_POST['staj'];
-			$tanggal = $_POST['tanggal'];
-			$data = $this->Mjadwal->seeJadwal($stab,$staj,$tanggal);
-			$this->load->view('Jadwal',$data);
+		if (!empty($_GET['stab'])&&!empty($_GET['staj'])&&!empty($_GET['tanggal'])){
+			$stab = $_GET['stab'];
+			$staj = $_GET['staj'];
+			$tanggal = $_GET['tanggal'];
+			$sql = $this->Mjadwal->cekStasiun($stab,$staj);
+			if($sql){
+				foreach ($sql as $key){
+					$id = $key['idstasiun'];
+				}
+				$jadwal = $this->Mjadwal->seeJadwal($tanggal,$id);
+				if($jadwal->num_rows()>0){
+					$hasil['jadwal']['entries'] = $jadwal->result();
+					$this->load->view('Jadwal',$hasil);
+				}
+			}
 		}
 	}
 }

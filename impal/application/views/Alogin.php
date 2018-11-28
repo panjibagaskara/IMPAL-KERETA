@@ -19,28 +19,25 @@
 				<div class="container">
 					<div class="container">
 						<div class="row" style="margin-top: 150px;margin-bottom: 170px;opacity: 0.9">
-							<div class="col-md-6 rounded-left" style="background-color: black;">
+							<div class="col-md-2 rounded-left" style="background-color: black;">
+							
+							</div>
+							<div class="col-md-8" style="background-color: black;">
 								<h1 style="text-align: center;margin-top: 20px;color: #C0C0C0;">Login</h1>
-								<form method="post" action="<?php echo base_url();?>Clogin/login">
+								<form method="post" action="<?php echo base_url();?>Calogin/login">
 								  <div class="form-group">
-								    <label for="uname" style="color: #C0C0C0;"><b>Nama Pengguna</b></label>
-								    <input type="text" class="form-control" id="uname" name="uname" aria-describedby="unamehelp" placeholder="contohsaja9">
-								    <small id="unamehelp" class="form-text text-muted" style="color: #C0C0C0;">Masukkan username yang telah anda buat.</small>
+								    <label for="uname" style="color: #C0C0C0;"><b>Username</b></label>
+								    <input type="text" class="form-control" id="uname" name="uname" aria-describedby="unamehelp" placeholder="username">
 								  </div>
 								  <div class="form-group">
-								    <label for="pass" style="color: #C0C0C0;"><b>Kata Sandi</b></label>
-								    <input type="password" class="form-control" id="pass" name="pass" placeholder="kata sandi">
+								    <label for="pass" style="color: #C0C0C0;"><b>Password</b></label>
+								    <input type="password" class="form-control" id="pass" name="pass" placeholder="password">
 								  </div>
 								  <button type="submit" class="btn btn-block btn-secondary" style="margin-bottom: 20px;px;float: right;background-color:#C0C0C0;color: black;"><b>Masuk</b></button>
 								</form>
 							</div>
-							<div class="col-md-6 rounded-right" style="background-color: #C0C0C0;">
-								<h2 style="margin-top: 100px;text-align: center;margin-bottom: 25px;color: black;">
-									Belum punya akun? Daftar disini.
-								</h2>
-								<form method="post" action="<?php echo base_url();?>Cregister">
-									<button type="submit" class="btn btn-block btn-dark" style="margin-bottom: 35px;background-color: black;color: #C0C0C0;"><b>Daftar!</b></button>
-								</form>
+							<div class="col-md-2 rounded-right" style="background-color: black;">
+							
 							</div>
 						</div>
 					</div>
