@@ -23,7 +23,7 @@ class Mjadwal extends CI_Model {
 		return $query->result_array();
 	}
 	public function seeJadwal($tanggal,$idstasiun){
-		$this->db->select('namakereta,kelas,jumkursi,harga,idjadwal,tanggalberangkat,jamberangkat,jamtiba');
+		$this->db->select('idkereta,namakereta,kelas,jumkursi,harga,idjadwal,tanggalberangkat,jamberangkat,jamtiba');
 		$this->db->from('jadwal');
 		$this->db->join('kereta','jadwal.idkereta = kereta.idkereta');
 		$this->db->join('gerbong','kereta.idkereta = gerbong.idkereta');

@@ -19,6 +19,9 @@ class Cjadwal extends CI_Controller {
 		}
 	}
 	public function book(){
+		$idjadwal = $_GET['idjadwal'];
+		$idkereta = $_GET['idkereta'];
+		$tanggal = $this->session->flashdata('tanggal');
 		$this->load->view('Kursi');
 	}
 }

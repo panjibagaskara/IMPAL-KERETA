@@ -34,6 +34,8 @@ class Cpesan extends CI_Controller {
 					redirect($this->config->base_url().'Cjadwal');
 				}
 			}
+		}else{
+			redirect($this->config->base_url().'Cpesan');
 		}
 	}
 }

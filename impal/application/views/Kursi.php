@@ -93,11 +93,11 @@
                                                                     for ($i=0;$i<20;$i++){ ?>
                                                                         <div class="w3-row">
                                                                             <div class="w3-col l1 m1 s1 w3-center"><?php echo $i+1; ?></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" onclick=""></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'A'.($i+1) ?>"  onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'B'.($i+1) ?>" onclick=""></div></div>
                                                                             <div class="w3-col l3 m3 s3 w3-center">||</div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" onclick=""></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'C'.($i+1) ?>" onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'D'.($i+1) ?>" onclick=""></div></div>
                                                                         </div>
                                                                     <?php } ?>
                                                             </div>
