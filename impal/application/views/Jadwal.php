@@ -72,7 +72,7 @@
                                                                             <div class="w3-col l4 m4"><p class="w3-left-align"><?php echo $_GET['stab']; ?> to <?php echo $_GET['staj']; ?></p></div>
                                                                             <div class="w3-col l4 m4"><p class="w3-center">Rp. <?php echo $key->harga; ?></p></div>
                                                                             <div class="w3-col l4 m4 w3-right-align">
-                                                                                <form method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Cjadwal/book">
+                                                                                <form method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Ckursi">
                                                                                     <input type="hidden" name="idjadwal" value="<?php echo $key->idjadwal; ?>">
                                                                                     <input type="hidden" name="idkereta" value="<?php echo $key->idkereta; ?>">
                                                                                     <input type="submit" name="book" class="w3-white w3-round" value="Book">

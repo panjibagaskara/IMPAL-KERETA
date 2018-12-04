@@ -36,6 +36,9 @@
         margin:auto;
         background-color: blue;
     }
+    .kursor{
+        cursor: pointer;
+    }
 </style>
 <body>
     <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
@@ -69,8 +72,14 @@
                                                     <form encype="multipart/form-data" method="get" action="">
                                                         <label for="gerbong">Pilih Gerbong : </label>
                                                         <select name="gerbong" id="gerbong" class="w3-round w3-large">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            <?php 
+                                                                foreach ($gerbong['entries'] as $key){ ?>
+                                                                    <option value="<?php echo $key->idgerbong; ?>"><?php echo $key->idgerbong; ?></option>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                            <!-- <option value="1">1</option>
+                                                            <option value="2">2</option> -->
                                                         </select>
                                                         <span style="margin-left:5px;"><input type="submit" class="w3-round" value="Pilih"></span>
                                                     </form>
@@ -93,11 +102,11 @@
                                                                     for ($i=0;$i<20;$i++){ ?>
                                                                         <div class="w3-row">
                                                                             <div class="w3-col l1 m1 s1 w3-center"><?php echo $i+1; ?></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'A'.($i+1) ?>"  onclick=""></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'B'.($i+1) ?>" onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'A'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'B'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
                                                                             <div class="w3-col l3 m3 s3 w3-center">||</div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'C'.($i+1) ?>" onclick=""></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round" id="<?php echo 'D'.($i+1) ?>" onclick=""></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'C'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'D'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
                                                                         </div>
                                                                     <?php } ?>
                                                             </div>
@@ -123,7 +132,7 @@
                                                                     </div>
                                                                     <div class="margin2">
                                                                         <label for="kursi">Kursi Anda :</label>
-                                                                        <input type="text" class="w3-input w3-sand w3-round" disabled>
+                                                                        <input type="text" id="nokursi" name="nokursi" class="w3-input w3-sand w3-round" value="" readonly>
                                                                     </div>
                                                                     <div class="w3-row">
                                                                         <div class="w3-col s8 margin2"></div>
@@ -182,6 +191,16 @@
             x.previousElementSibling.className = 
             x.previousElementSibling.className.replace(" w3-theme", "");
         }
+    }
+
+    function getNoKursi(id){
+        //document.getElementById('nokursi').val() = $()
+        $('#nokursi').val(id);
+    }
+
+    function movetoForm(id){
+        var tes = document.getElementById('nokursi');
+        tes.value = id;
     }
 </script>
 </body>
