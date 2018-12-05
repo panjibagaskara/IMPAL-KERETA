@@ -72,7 +72,7 @@
                                                                         <div class="w3-col l4 m4"><p class="w3-left-align"><?php echo $key->sta_awal; ?> -> <?php echo $key->sta_akhir; ?></p></div>
                                                                         <div class="w3-col l4 m4"><p class="w3-center"><?php echo $key->namakereta; ?>(<?php echo $key->idgerbong; ?>)</p></div>
                                                                         <div class="w3-col l4 m4 w3-right-align">
-                                                                            <form method="get" encype="multipart/form-data" action="">
+                                                                            <form method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Criwayat/delete">
                                                                                 <input type="hidden" name="idriwayat" value="<?php echo $key->idriwayat; ?>">
                                                                                 <input type="submit" name="book" class="w3-white w3-round" value="Hapus">
                                                                             </form>

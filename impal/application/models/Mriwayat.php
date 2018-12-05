@@ -27,7 +27,10 @@ class Mriwayat extends CI_Model {
 		return $query;
 	}
 	public function deleteRiwayat($idriwayat){
-		$this->db->where('idriwayat', $idriwayat);
+		$where = array(
+			'idriwayat' => $idriwayat
+		);
+		$this->db->where($where);
 		$this->db->delete('riwayat');
 	}
 }

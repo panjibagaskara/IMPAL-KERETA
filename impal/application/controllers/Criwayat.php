@@ -21,4 +21,8 @@ class Criwayat extends CI_Controller {
 			redirect($this->config->base_url());
 		}
 	}
+	public function delete(){
+		$this->Mriwayat->deleteRiwayat($_GET['idriwayat']);
+		redirect($this->config->base_url().'Criwayat');
+	}
 }
