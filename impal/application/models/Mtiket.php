@@ -6,12 +6,15 @@ class Mtiket extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-	public function bookingTiket($idtiket,$noktp,$username,$idjadwal){
+	public function bookingTiket($idtiket,$noktp,$username,$idjadwal,$penumpang,$jk,$kursi){
 		$data = array(
 			'idtiket' => $idtiket,
-	        'noktp' => $noktp,
 	        'username' => $username,
 	        'idjadwal' => $idjadwal,
+			'noktp' => $noktp,
+			'penumpang' => $penumpang,
+			'jk' => $jk,
+			'kursi' => $kursi,
 	        'statusbayar' => 0,
 	        'statuscheckin' => 0
 		);

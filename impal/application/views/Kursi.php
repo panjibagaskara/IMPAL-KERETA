@@ -36,6 +36,9 @@
         margin:auto;
         background-color: blue;
     }
+    .kotak:hover{
+        background-color: green;
+    }
     .kursor{
         cursor: pointer;
     }
