@@ -24,12 +24,12 @@
 								<form method="post" action="<?php echo base_url();?>Clogin/login">
 								  <div class="form-group">
 								    <label for="uname" style="color: #C0C0C0;"><b>Nama Pengguna</b></label>
-								    <input type="text" class="form-control" id="uname" name="uname" aria-describedby="unamehelp" placeholder="contohsaja9">
+								    <input type="text" class="form-control" id="uname" name="uname" aria-describedby="unamehelp" placeholder="contohsaja9" required>
 								    <small id="unamehelp" class="form-text text-muted" style="color: #C0C0C0;">Masukkan username yang telah anda buat.</small>
 								  </div>
 								  <div class="form-group">
 								    <label for="pass" style="color: #C0C0C0;"><b>Kata Sandi</b></label>
-								    <input type="password" class="form-control" id="pass" name="pass" placeholder="kata sandi">
+								    <input type="password" class="form-control" id="pass" name="pass" placeholder="kata sandi" required>
 								  </div>
 								  <button type="submit" class="btn btn-block btn-secondary" style="margin-bottom: 20px;px;float: right;background-color:#C0C0C0;color: black;"><b>Masuk</b></button>
 								</form>

@@ -49,52 +49,32 @@
                                         <div class="w3-col l2 m2"></div>
                                         <div class="w3-col l8 m8 w3-card" style="">
                                             <div class="w3-container panel w3-round">
-                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Daftar Perjalanan</h2>
+                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Riwayat Pemesanan</h2>
                                                 <hr>
                                                 <div class="margin2 w3-border w3-round w3-sand">
-                                                    <?php 
-                                                        if($this->session->flashdata('stab')&&$this->session->flashdata('staj')&&$this->session->flashdata('tanggal')){
-                                                            if ($this->session->flashdata('nodata')){
-                                                                $pesan = $this->session->flashdata('nodata'); ?>
-                                                                <div class="w3-container" style="margin-top:5px;">
-                                                                    <p class="text-center pt-100 pb-100"><?php echo $pesan; ?></p>
-                                                                </div>
-                                                    <?php
-                                                            }else{
-                                                                $i = 0;
-                                                                foreach ($jadwal['entries'] as $key){ ?>
-                                                                    <div class="w3-container" style="margin-top:5px;">
-                                                                        <div class="w3-row">
-                                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><b><?php echo $key->namakereta." (".$key->idgerbong.")"; ?></b></p></div>
-                                                                            <div class="w3-col l4 m4"><p class="w3-center"><b><?php echo $key->kelas; ?></b></p></div>
-                                                                            <div class="w3-col l4 m4"><p class="w3-right-align"><b><?php echo ($key->jumkursi)-$jumkursi[$i]; ?> seat</b></p></div>
-                                                                        </div>
-                                                                        <div class="w3-row">
-                                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><?php echo $_GET['stab']; ?> to <?php echo $_GET['staj']; ?></p></div>
-                                                                            <div class="w3-col l4 m4"><p class="w3-center">Rp. <?php echo $key->harga; ?></p></div>
-                                                                            <div class="w3-col l4 m4 w3-right-align">
-                                                                                <form method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Ckursi">
-                                                                                    <input type="hidden" name="idjadwal" value="<?php echo $key->idjadwal; ?>">
-                                                                                    <input type="hidden" name="idkereta" value="<?php echo $key->idkereta; ?>">
-                                                                                    <input type="hidden" name="idgerbong" value="<?php echo $key->idgerbong; ?>">
-                                                                                    <input type="submit" name="book" class="w3-white w3-round" value="Book">
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="w3-row">
-                                                                            <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: <?php echo $key->tanggalberangkat; ?> <?php echo $key->jamberangkat; ?></i></p></div>
-                                                                            <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: <?php echo $key->tanggalberangkat; ?> <?php echo $key->jamtiba; ?></i></p></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr>
-                                                            <?php $i++;
-                                                                }
-                                                            }
-                                                        }
-                                                        ?>
+                                                    <div class="w3-container" style="margin-top:5px;">
+                                                        <div class="w3-row">
+                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><b></b></p></div>
+                                                            <div class="w3-col l4 m4"><p class="w3-center"><b></b></p></div>
+                                                            <div class="w3-col l4 m4"><p class="w3-right-align"><b></b></p></div>
+                                                        </div>
+                                                        <div class="w3-row">
+                                                            <div class="w3-col l4 m4"><p class="w3-left-align"></p></div>
+                                                            <div class="w3-col l4 m4"><p class="w3-center"></p></div>
+                                                            <div class="w3-col l4 m4 w3-right-align">
+                                                                <form method="get" encype="multipart/form-data" action="">
+                                                                    <input type="submit" name="book" class="w3-white w3-round" value="Book">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w3-row">
+                                                            <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: </i></p></div>
+                                                            <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: </i></p></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <hr>
                                             </div>
+                                        </div>
                                         </div>
                                         <div class="w3-col l2 m2"></div>
                                     </div>

@@ -20,7 +20,7 @@ class Calogin extends CI_Controller {
 					$nama = $key->username;
 				}
 				if(!empty($nama)){
-					$this->session->set_userdata('username',$nama);
+					$this->session->set_userdata('username_ad',$nama);
 					redirect($this->config->base_url().'Cadashboard');
 				}
 			}else{
@@ -30,7 +30,7 @@ class Calogin extends CI_Controller {
 		}
 	}
 	public function logout(){
-		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('username_ad');
 		$this->session->sess_destroy();
 		redirect($this->config->base_url().'Calogin');
 	}

@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cadashboard extends CI_Controller {
+class Cpembayaran extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 	}
 	public function index()
 	{
-		if ($this->session->has_userdata('username_ad')){
-			$this->load->view('Adashboard');
+		if ($this->session->has_userdata('username')){
+			$this->load->view('Pembayaran');
 		}else{
 			redirect($this->config->base_url().'Calogin');
 		}

@@ -36,7 +36,7 @@
         margin:auto;
         background-color: blue;
     }
-    .kotak:hover{
+    .kursor:hover{
         background-color: green;
     }
     .kursor{
@@ -71,23 +71,6 @@
                                             <div class="w3-container panel w3-round">
                                                 <h2 class="w3-center w3-bold" style="padding-top:15px;">Pilih Kursi</h2>
                                                 <hr>
-                                                <div>
-                                                    <form encype="multipart/form-data" method="get" action="">
-                                                        <label for="gerbong">Pilih Gerbong : </label>
-                                                        <select name="gerbong" id="gerbong" class="w3-round w3-large">
-                                                            <?php 
-                                                                foreach ($gerbong['entries'] as $key){ ?>
-                                                                    <option value="<?php echo $key->idgerbong; ?>"><?php echo $key->idgerbong; ?></option>
-                                                            <?php
-                                                                }
-                                                            ?>
-                                                            <!-- <option value="1">1</option>
-                                                            <option value="2">2</option> -->
-                                                        </select>
-                                                        <span style="margin-left:5px;"><input type="submit" class="w3-round" value="Pilih"></span>
-                                                    </form>
-                                                </div>
-                                                <hr>
                                                 <div class="w3-container">
                                                     <div class="w3-row">
                                                         <div class="w3-col l6 m6 s6 w3-border w3-round">
@@ -102,16 +85,132 @@
                                                                     <div class="w3-col l2 m2 s2 w3-center">D</div>
                                                                 </div>
                                                                 <?php 
+                                                                    $a = array();
+                                                                    foreach($kursi['entries'] as $row){
+                                                                        array_push($a,$row->kursi);
+                                                                    }
                                                                     for ($i=0;$i<20;$i++){ ?>
                                                                         <div class="w3-row">
                                                                             <div class="w3-col l1 m1 s1 w3-center"><?php echo $i+1; ?></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'A'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'B'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center">
+                                                                                <?php 
+                                                                                    $j = 0;
+                                                                                    $id = 'A'.($i+1);
+                                                                                    if(!empty($a)){
+                                                                                        while($j<count($a) && $id!=$a[$j]){
+                                                                                            $j++;
+                                                                                        }
+                                                                                        if($j==count($a)){
+                                                                                            $j--;
+                                                                                        }
+                                                                                        if($id==$a[$j]){ ?>
+                                                                                            <div class="kotak w3-round" style="background-color:red;"
+                                                                                                id="<?php echo 'A'.($i+1); ?>">
+                                                                                            </div>
+                                                                                <?php   }else{ ?>
+                                                                                            <div class="kotak w3-round kursor"
+                                                                                                id="<?php echo 'A'.($i+1); ?>"
+                                                                                                onclick="movetoForm(this.id)">
+                                                                                            </div>
+                                                                                <?php   }
+                                                                                    }else{ ?>
+                                                                                        <div class="kotak w3-round kursor"
+                                                                                            id="<?php echo 'A'.($i+1); ?>"
+                                                                                            onclick="movetoForm(this.id)">
+                                                                                        </div>
+                                                                                <?php }
+                                                                                ?>
+                                                                            </div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center">
+                                                                                <?php 
+                                                                                    $j = 0;
+                                                                                    $id = 'B'.($i+1);
+                                                                                    if(!empty($a)){
+                                                                                        while($j<count($a) && $id!=$a[$j]){
+                                                                                            $j++;
+                                                                                        }
+                                                                                        if($j==count($a)){
+                                                                                            $j--;
+                                                                                        }
+                                                                                        if($id==$a[$j]){ ?>
+                                                                                            <div class="kotak w3-round" style="background-color:red;"
+                                                                                                id="<?php echo 'B'.($i+1); ?>">
+                                                                                            </div>
+                                                                                <?php   }else{ ?>
+                                                                                            <div class="kotak w3-round kursor"
+                                                                                                id="<?php echo 'B'.($i+1); ?>"
+                                                                                                onclick="movetoForm(this.id)">
+                                                                                            </div>
+                                                                                <?php   }
+                                                                                    }else{ ?>
+                                                                                        <div class="kotak w3-round kursor"
+                                                                                            id="<?php echo 'B'.($i+1); ?>"
+                                                                                            onclick="movetoForm(this.id)">
+                                                                                        </div>
+                                                                                <?php }
+                                                                                ?>
+                                                                            </div>
                                                                             <div class="w3-col l3 m3 s3 w3-center">||</div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'C'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
-                                                                            <div class="w3-col l2 m2 s2 w3-center"><div class="kotak w3-round kursor" id="<?php echo 'D'.($i+1) ?>" onclick="movetoForm(this.id)"></div></div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center">
+                                                                                <?php 
+                                                                                    $j = 0;
+                                                                                    $id = 'C'.($i+1);
+                                                                                    if(!empty($a)){
+                                                                                        while($j<count($a) && $id!=$a[$j]){
+                                                                                            $j++;
+                                                                                        }
+                                                                                        if($j==count($a)){
+                                                                                            $j--;
+                                                                                        }
+                                                                                        if($id==$a[$j]){ ?>
+                                                                                            <div class="kotak w3-round" style="background-color:red;"
+                                                                                                id="<?php echo 'C'.($i+1); ?>">
+                                                                                            </div>
+                                                                                <?php   }else{ ?>
+                                                                                            <div class="kotak w3-round kursor"
+                                                                                                id="<?php echo 'C'.($i+1); ?>"
+                                                                                                onclick="movetoForm(this.id)">
+                                                                                            </div>
+                                                                                <?php   }
+                                                                                    }else{ ?>
+                                                                                        <div class="kotak w3-round kursor"
+                                                                                            id="<?php echo 'C'.($i+1); ?>"
+                                                                                            onclick="movetoForm(this.id)">
+                                                                                        </div>
+                                                                                <?php }
+                                                                                ?>
+                                                                            </div>
+                                                                            <div class="w3-col l2 m2 s2 w3-center">
+                                                                                <?php 
+                                                                                    $j = 0;
+                                                                                    $id = 'D'.($i+1);
+                                                                                    if(!empty($a)){
+                                                                                        while($j<count($a) && $id!=$a[$j]){
+                                                                                            $j++;
+                                                                                        }
+                                                                                        if($j==count($a)){
+                                                                                            $j--;
+                                                                                        }
+                                                                                        if($id==$a[$j]){ ?>
+                                                                                            <div class="kotak w3-round" style="background-color:red;"
+                                                                                                id="<?php echo 'D'.($i+1); ?>">
+                                                                                            </div>
+                                                                                <?php   }else{ ?>
+                                                                                            <div class="kotak w3-round kursor"
+                                                                                                id="<?php echo 'D'.($i+1); ?>"
+                                                                                                onclick="movetoForm(this.id)">
+                                                                                            </div>
+                                                                                <?php   }
+                                                                                    }else{ ?>
+                                                                                        <div class="kotak w3-round kursor"
+                                                                                            id="<?php echo 'D'.($i+1); ?>"
+                                                                                            onclick="movetoForm(this.id)">
+                                                                                        </div>
+                                                                                <?php }
+                                                                                ?>
+                                                                            </div>
                                                                         </div>
-                                                                    <?php } ?>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
                                                         <div class="w3-col l6 m6 s6">
@@ -120,11 +219,11 @@
                                                                     <h6><b>Data Penumpang</b></h6><hr>
                                                                     <div class="margin2">
                                                                         <label for="noktp">Nomor Identitas : </label>
-                                                                        <input class="w3-input w3-sand w3-round" type="text" name="noktp" id="noktp">
+                                                                        <input class="w3-input w3-sand w3-round" type="text" name="noktp" id="noktp" pattern="[0-9]*" required>
                                                                     </div>
                                                                     <div class="margin2">
                                                                         <label for="nama">Nama Penumpang : </label>
-                                                                        <input class="w3-input w3-sand w3-round" type="text" name="nama" id="nama">
+                                                                        <input class="w3-input w3-sand w3-round" type="text" name="nama" id="nama" pattern="[A-Za-z\s]*" required>
                                                                     </div>
                                                                     <div class="margin2">
                                                                         <label for="jk">Jenis Kelamin :</label>

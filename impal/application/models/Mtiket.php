@@ -6,11 +6,12 @@ class Mtiket extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-	public function bookingTiket($idtiket,$noktp,$username,$idjadwal,$penumpang,$jk,$kursi){
+	public function bookingTiket($idtiket,$noktp,$username,$idjadwal,$penumpang,$jk,$kursi,$idgerbong){
 		$data = array(
 			'idtiket' => $idtiket,
 	        'username' => $username,
-	        'idjadwal' => $idjadwal,
+			'idjadwal' => $idjadwal,
+			'idgerbong' => $idgerbong,
 			'noktp' => $noktp,
 			'penumpang' => $penumpang,
 			'jk' => $jk,
@@ -20,19 +21,24 @@ class Mtiket extends CI_Model {
 		);
 		$this->db->insert('tiket', $data);
 	}
-	public function lihatLaporanTiket($tanggal){
-		$this->db->select('noktp, namakereta, sta_awal, sta_akhir, jamberangkat, harga');
-		$this->db->from('tiket');
-		$this->db->join('jadwal', 'jadwal.idjadwal = tiket.idjadwal');
-		$this->db->join('kereta','kereta.idkereta = tiket.idkereta');
-		$this->db->where('tanggalberangkat',$tanggal);
-		$query = $this->db->get();
-		return $query->result_array();
-	}
 	public function boardingPass($idtiket){
 		$this->db->set('statuscheckin', 1);
 		$this->db->where('idtiket', $idtiket);
 		$this->db->update('tiket');
+	}
+	public function getKursiBooked($idjadwal,$idkereta,$idgerbong){
+		$this->db->select('kursi');
+		$this->db->from('tiket');
+		$this->db->join('jadwal','tiket.idjadwal = jadwal.idjadwal');
+		$this->db->join('kereta','jadwal.idkereta = kereta.idkereta');
+		$where = array(
+			'tiket.idjadwal' => $idjadwal,
+			'jadwal.idkereta' => $idkereta,
+			'tiket.idgerbong' => $idgerbong
+		);
+		$this->db->where($where);
+		$query = $this->db->get();
+		return $query;
 	}
 }
 ?>
