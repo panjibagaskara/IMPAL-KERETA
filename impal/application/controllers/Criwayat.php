@@ -9,7 +9,14 @@ class Criwayat extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->has_userdata('username')){
-			$this->load->view('Riwayat');
+            $riwayat = $this->Mriwayat->seeRiwayat($_SESSION['username']);
+            $hasil['riwayat']['entries'] = $riwayat->result();
+            if($riwayat->num_rows()>0){
+                $this->load->view('Riwayat',$hasil);
+            }else{
+                $this->session->set_flashdata('nodata','Jadwal tidak tersedia');
+				$this->load->view('Riwayat');
+            }
 		}else{
 			redirect($this->config->base_url());
 		}

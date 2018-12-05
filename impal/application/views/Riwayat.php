@@ -52,27 +52,44 @@
                                                 <h2 class="w3-center w3-bold" style="padding-top:15px;">Riwayat Pemesanan</h2>
                                                 <hr>
                                                 <div class="margin2 w3-border w3-round w3-sand">
-                                                    <div class="w3-container" style="margin-top:5px;">
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align"><b></b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center"><b></b></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-right-align"><b></b></p></div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l4 m4"><p class="w3-left-align"></p></div>
-                                                            <div class="w3-col l4 m4"><p class="w3-center"></p></div>
-                                                            <div class="w3-col l4 m4 w3-right-align">
-                                                                <form method="get" encype="multipart/form-data" action="">
-                                                                    <input type="submit" name="book" class="w3-white w3-round" value="Book">
-                                                                </form>
+                                                    <?php 
+                                                        if($this->session->flashdata('nodata')){
+                                                            $pesan = $this->session->flashdata('nodata'); ?>
+                                                            <div class="w3-container" style="margin-top:5px;">
+                                                                <p class="text-center pt-100 pb-100"><?php echo $pesan; ?></p>
                                                             </div>
-                                                        </div>
-                                                        <div class="w3-row">
-                                                            <div class="w3-col l6 m6"><p class="w3-left-align"><i>Berangkat: </i></p></div>
-                                                            <div class="w3-col l6 m6"><p class="w3-right-align"><i>Tiba: </i></p></div>
-                                                        </div>
-                                                    </div>
+                                               <?php    }
+                                                        else{
+                                                            foreach($riwayat['entries'] as $key){
+                                                    ?>
+                                                                <div class="w3-container" style="margin-top:5px;">
+                                                                    <div class="w3-row">
+                                                                        <div class="w3-col l4 m4"><p class="w3-left-align"><b><?php echo $key->penumpang; ?></b></p></div>
+                                                                        <div class="w3-col l4 m4"><p class="w3-center"><b><?php echo $key->noktp; ?></b></p></div>
+                                                                        <div class="w3-col l4 m4"><p class="w3-right-align"><b>No Kursi : <?php echo $key->kursi; ?></b></p></div>
+                                                                    </div>
+                                                                    <div class="w3-row">
+                                                                        <div class="w3-col l4 m4"><p class="w3-left-align"><?php echo $key->sta_awal; ?> -> <?php echo $key->sta_akhir; ?></p></div>
+                                                                        <div class="w3-col l4 m4"><p class="w3-center"><?php echo $key->namakereta; ?>(<?php echo $key->idgerbong; ?>)</p></div>
+                                                                        <div class="w3-col l4 m4 w3-right-align">
+                                                                            <form method="get" encype="multipart/form-data" action="">
+                                                                                <input type="hidden" name="idriwayat" value="<?php echo $key->idriwayat; ?>">
+                                                                                <input type="submit" name="book" class="w3-white w3-round" value="Hapus">
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="w3-row">
+                                                                        <div class="w3-col l4 m4"><p class="w3-left-align"><i>Berangkat: <?php echo $key->tanggalberangkat; ?></i></p></div>
+                                                                        <div class="w3-col l4 m4"><p class="w3-center"><b><?php if (($key->statusbayar)==0){echo "Unpaid";}else{ echo "Paid";} ?></b></p></div>
+                                                                        <div class="w3-col l4 m4"><p class="w3-right-align">Harga: Rp.<?php echo $key->harga; ?></p></div>
+                                                                    </div>
+                                                                </div>
+                                                    <?php
+                                                            }
+                                                        }
+                                                    ?>
                                                 </div>
+                                                <hr>
                                             </div>
                                         </div>
                                         </div>

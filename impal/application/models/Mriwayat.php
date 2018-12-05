@@ -17,10 +17,12 @@ class Mriwayat extends CI_Model {
 		$this->db->from('riwayat');
 		$this->db->join('tiket','tiket.idtiket = riwayat.idtiket');
 		$this->db->join('jadwal','tiket.idjadwal = jadwal.idjadwal');
+		$this->db->join('stasiun','jadwal.idstasiun = stasiun.idstasiun');
 		$this->db->join('kereta','jadwal.idkereta = kereta.idkereta');
 		$where = array(
 			'username' => $username
 		);
+		$this->db->where($where);
 		$query = $this->db->get();
 		return $query;
 	}
