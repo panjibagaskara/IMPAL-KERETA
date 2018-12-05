@@ -49,7 +49,7 @@
                                         <div class="w3-col l2 m2"></div>
                                         <div class="w3-col l8 m8 w3-card" style="">
                                             <div class="w3-container panel w3-round">
-                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Daftar Perjalanan</h2>
+                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Pesan Tiket</h2>
                                                 <hr>
                                                 <div class="margin2 w3-border w3-round w3-sand">
                                                     <?php 

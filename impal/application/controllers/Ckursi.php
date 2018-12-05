@@ -27,7 +27,7 @@ class Ckursi extends CI_Controller {
 		$kursi = $_POST['nokursi'];
 		$idjadwal = $this->session->flashdata('idjadwal');
 		if(!empty($ktp)&&!empty($nama)&&!empty($jk)&&!empty($kursi)){
-			$idtiket = rand(1111111111,9999999999);
+			$idtiket = mt_rand();
 			$this->Mtiket->bookingTiket($idtiket,$ktp,$_SESSION['username'],$idjadwal,$nama,$jk,$kursi);
 			$this->load->view('Pembayaran');
 		}
