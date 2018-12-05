@@ -17,7 +17,7 @@ body {font-family: "Roboto", sans-serif}
     <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="<?php echo base_url(); ?>Cdashboard"><img src="<?php echo base_url(); ?>/img/LOGO.png" style="width:100%;"></a>
     <a class="w3-bar-item w3-button w3-teal" href="<?php echo base_url(); ?>Cdashboard">Home</a>
     <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Cdashboard/pesan">Pesan Tiket</a>
-    <a class="w3-bar-item w3-button" href="#">Riwayat Pemesanan</a>
+    <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Criwayat">Riwayat Pemesanan</a>
     <a class="w3-bar-item w3-button" href="<?php echo base_url(); ?>Clogin/logout">LOGOUT</a>
 </nav>
 
