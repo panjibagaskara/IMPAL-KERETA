@@ -45,7 +45,7 @@
                                         <div class="w3-col l3 m3"></div>
                                         <div class="w3-col l6 m6">
                                             <form class="w3-card w3-round margin1" method="get" encype="multipart/form-data" action="<?php echo base_url(); ?>Cpesan/next">
-                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Pesan Tiket</h2>
+                                                <h2 class="w3-center w3-bold" style="padding-top:15px;">Lihat Jadwal</h2>
                                                 <hr>
                                                 <div class="margin2">
                                                     <label for="berangkat">Stasiun Keberangkatan</label>
