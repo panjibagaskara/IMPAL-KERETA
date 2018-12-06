@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2018 at 02:50 AM
+-- Generation Time: Dec 06, 2018 at 02:55 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -58,6 +58,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`username`, `password`, `email`) VALUES
+('alfisar', 'alfisar123', 'alfisar589@gmail.com'),
 ('panjibgskr', '12345678', 'panjibagaskara89@gmail.com');
 
 -- --------------------------------------------------------
@@ -78,8 +79,9 @@ CREATE TABLE `gerbong` (
 --
 
 INSERT INTO `gerbong` (`idgerbong`, `idkereta`, `kelas`, `jumkursi`) VALUES
-('gerbong1', 'kereta1', 'Eksekutif', 80),
-('gerbong2', 'kereta1', 'Ekonomi', 80);
+('APEKO1', 'kereta1', 'Ekonomi', 80),
+('APEKS1', 'kereta1', 'Eksekutif', 80),
+('SPEKS1', 'kereta2', 'Eksekutif', 80);
 
 -- --------------------------------------------------------
 
@@ -102,8 +104,9 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`idjadwal`, `idkereta`, `idstasiun`, `jamberangkat`, `jamtiba`, `tanggalberangkat`, `harga`) VALUES
-(3, 'kereta1', 'stasiun1', '10:00:00', '13:00:00', '2018-12-02', 80000),
-(4, 'kereta1', 'stasiun2', '19:00:00', '22:00:00', '2018-12-02', 80000);
+(3, 'kereta1', 'stasiun1', '10:00:00', '13:00:00', '2018-12-08', 80000),
+(4, 'kereta2', 'stasiun2', '19:00:00', '22:00:00', '2018-12-08', 80000),
+(11, 'kereta1', 'stasiun1', '04:00:00', '07:00:00', '2018-12-08', 120000);
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,7 @@ INSERT INTO `kereta` (`idkereta`, `namakereta`) VALUES
 --
 
 CREATE TABLE `riwayat` (
-  `idriwayat` varchar(10) NOT NULL,
+  `idriwayat` int(11) NOT NULL,
   `idtiket` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -165,6 +168,7 @@ CREATE TABLE `tiket` (
   `idtiket` varchar(10) NOT NULL,
   `username` varchar(10) NOT NULL,
   `idjadwal` int(11) NOT NULL,
+  `idgerbong` varchar(10) NOT NULL,
   `noktp` varchar(20) NOT NULL,
   `penumpang` varchar(100) NOT NULL,
   `jk` varchar(6) NOT NULL,
@@ -172,13 +176,6 @@ CREATE TABLE `tiket` (
   `statusbayar` int(11) NOT NULL,
   `statuscheckin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tiket`
---
-
-INSERT INTO `tiket` (`idtiket`, `username`, `idjadwal`, `noktp`, `penumpang`, `jk`, `kursi`, `statusbayar`, `statuscheckin`) VALUES
-('3365647010', 'panjibgskr', 3, '082216645842', 'Panji Bagaskara', 'pria', 'A1', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -236,7 +233,8 @@ ALTER TABLE `stasiun`
 ALTER TABLE `tiket`
   ADD PRIMARY KEY (`idtiket`),
   ADD KEY `idjadwal` (`idjadwal`),
-  ADD KEY `username` (`username`);
+  ADD KEY `username` (`username`),
+  ADD KEY `idgerbong` (`idgerbong`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -246,7 +244,13 @@ ALTER TABLE `tiket`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `riwayat`
+--
+ALTER TABLE `riwayat`
+  MODIFY `idriwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -276,7 +280,8 @@ ALTER TABLE `riwayat`
 --
 ALTER TABLE `tiket`
   ADD CONSTRAINT `tiket_ibfk_2` FOREIGN KEY (`idjadwal`) REFERENCES `jadwal` (`idjadwal`),
-  ADD CONSTRAINT `tiket_ibfk_3` FOREIGN KEY (`username`) REFERENCES `customer` (`username`);
+  ADD CONSTRAINT `tiket_ibfk_3` FOREIGN KEY (`username`) REFERENCES `customer` (`username`),
+  ADD CONSTRAINT `tiket_ibfk_4` FOREIGN KEY (`idgerbong`) REFERENCES `gerbong` (`idgerbong`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
