@@ -20,11 +20,7 @@ class Mtiket extends CI_Model {
 	        'statuscheckin' => 0
 		);
 		$this->db->insert('tiket', $data);
-	}
-	public function boardingPass($idtiket){
-		$this->db->set('statuscheckin', 1);
-		$this->db->where('idtiket', $idtiket);
-		$this->db->update('tiket');
+		return $this->db->affected_rows();
 	}
 	public function getKursiBooked($idjadwal,$idkereta,$idgerbong){
 		$this->db->select('kursi');

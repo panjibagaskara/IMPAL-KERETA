@@ -27,13 +27,18 @@ class Mcustomer extends CI_Model {
 		return $query;
 	}
 	public function daftarBaru($username,$password,$email){
-		$data = array(
-	        'username' => $username,
-	        'password' => $password,
-	        'email' => $email
-		);
-		$this->db->insert('customer', $data);
-		return $this->db->affected_rows();
+		$cek = $this->cekUsername($username);
+		if($cek){
+			$data = array(
+				'username' => $username,
+				'password' => $password,
+				'email' => $email
+			);
+			$this->db->insert('customer', $data);
+			return $this->db->affected_rows();
+		}else{
+			return -1;
+		}
 	}
 }
 ?>
