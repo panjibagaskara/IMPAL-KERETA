@@ -44,42 +44,52 @@
                                     <div class="row">
                                         <div class="w3-col l3 m3"></div>
                                         <div class="w3-col l6 m6">
-                                            <form class="w3-card w3-round margin1" method="post" encype="multipart/form-data" action="">
+                                            <?php 
+                                                if($this->session->flashdata('success')){
+                                                    $pesan = $this->session->flashdata('success');
+                                                    echo "<script>alert('".$pesan."');</script>";
+                                                }
+                                            ?>
+                                            <form class="w3-card w3-round margin1" method="post" encype="multipart/form-data" action="<?php echo base_url(); ?>Caddjadwal/add">
                                                 <h2 class="w3-center w3-bold" style="padding-top:15px;">Tambah Jadwal</h2>
                                                 <hr>
                                                 <div class="margin2">
                                                     <label for="kereta">Pilih Kereta</label>
                                                     <select class="w3-input w3-round" name="kereta" id="kereta">
-                                                        <option value="bekasi">Argo Parahyangan</option>
+                                                        <?php 
+                                                            foreach ($kereta['entries'] as $key){ ?>
+                                                                <option value="<?php echo $key->idkereta; ?>"><?php echo $key->namakereta; ?></option>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="margin2">
-                                                    <label for="tujuan">Stasiun Keberangkatan</label>
-                                                    <select class="w3-input w3-round" name="stab" id="berangkat">
-                                                        <option value="bandung">Bandung</option>
-                                                    </select>
-                                                </div>
-                                                <div class="margin2">
-                                                    <label for="tujuan">Stasiun Tujuan</label>
-                                                    <select class="w3-input w3-round" name="staj" id="tujuan">
-                                                        <option value="bandung">Bandung</option>
+                                                    <label for="tujuan">Pilih Stasiun</label>
+                                                    <select class="w3-input w3-round" name="stasiun" id="berangkat">
+                                                        <?php 
+                                                            foreach ($stasiun['entries'] as $key){ ?>
+                                                                <option value="<?php echo $key->idstasiun; ?>"><?php echo $key->sta_awal; ?> to <?php echo $key->sta_akhir; ?></option>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="margin2">
                                                     <label for="tanggal">Tanggal Keberangkatan</label>
-                                                    <input type="date" class="w3-input w3-sand w3-round" name="tanggal" id="tanggal">
+                                                    <input type="date" class="w3-input w3-sand w3-round" name="tanggal" id="tanggal" required>
                                                 </div>
                                                 <div class="margin2">
                                                     <label for="jamb">Jam Berangkat</label>
-                                                    <input type="time" class="w3-input w3-sand w3-round" name="jamb" id="jamb">
+                                                    <input type="time" class="w3-input w3-sand w3-round" name="jamb" id="jamb" required>
                                                 </div>
                                                 <div class="margin2">
                                                     <label for="jamt">Jam Tiba</label>
-                                                    <input type="time" class="w3-input w3-sand w3-round" name="jamt" id="jamt">
+                                                    <input type="time" class="w3-input w3-sand w3-round" name="jamt" id="jamt" required>
                                                 </div>
                                                 <div class="margin2">
                                                     <label for="harga">Harga</label>
-                                                    <input type="number" class="w3-input w3-sand w3-round" name="harga" id="harga">
+                                                    <input type="number" class="w3-input w3-sand w3-round" name="harga" id="harga" required>
                                                 </div>
                                                 <div class="w3-row">
                                                     <div class="w3-col s8 margin2"></div>

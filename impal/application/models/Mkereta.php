@@ -13,5 +13,10 @@ class Mkereta extends CI_Model {
 		);
 		$this->db->insert('kereta',$data);
 	}
+	public function getKereta(){
+		$this->db->from('kereta');
+		$query = $this->db->get();
+		return $query;
+	}
 }
 ?>

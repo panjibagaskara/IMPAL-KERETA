@@ -35,9 +35,8 @@ class Mjadwal extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
-	public function addJadwal($idjadwal,$idkereta,$idstasiun,$jamberangkat,$jamtiba,$tanggal,$harga){
+	public function addJadwal($idkereta,$idstasiun,$jamberangkat,$jamtiba,$tanggal,$harga){
 		$data = array(
-	        'idjadwal' => $idjadwal,
 	        'idkereta' => $idkereta,
 	        'idstasiun' => $idstasiun,
 			'jamberangkat' => $jamberangkat,
@@ -45,7 +44,8 @@ class Mjadwal extends CI_Model {
 			'tanggalberangkat' => $tanggal,
 			'harga' => $harga
 		);
-		$this->db->insert('jadwal', $data);
+		$query = $this->db->insert('jadwal', $data);
+		return $query->affected_rows();
 	}
 }
 ?>
