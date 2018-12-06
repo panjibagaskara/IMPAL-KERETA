@@ -45,7 +45,7 @@ class Mjadwal extends CI_Model {
 			'harga' => $harga
 		);
 		$query = $this->db->insert('jadwal', $data);
-		return $query->affected_rows();
+		return $this->db->affected_rows();
 	}
 }
 ?>
